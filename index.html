@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Actualisation - France Travail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header style="text-align: center; padding: 20px; background-color: #e9f0f8;">
+    <h1>Simulation Actualisation - France Travail</h1>
+    <div id="userGreeting" style="margin-top:10px;"></div>
+    <button id="logoutBtn" onclick="logout()" style="display:none; margin-top:10px;">🔓 Se déconnecter</button>
+  </header>
+
+  <div id="loginContainer" style="text-align: center; margin-top: 40px;">
+    <h2>Connexion</h2>
+    <input type="text" id="username" placeholder="Identifiant"><br><br>
+    <input type="password" id="password" placeholder="Mot de passe"><br><br>
+    <button onclick="login()">Se connecter</button>
+    <p id="loginError" style="color: red;"></p>
+  </div>
+
+  <div id="formContainer" style="display: none; max-width: 500px; margin: auto; padding: 20px;">
+    <div id="welcomeMessage" style="margin-bottom: 20px; font-weight: bold;"></div>
+
+    <form id="actualisationForm">
+      <div class="step active">
+        <p>Travaillez-vous actuellement ?</p>
+        <label><input type="radio" name="step1"> Oui</label>
+        <label><input type="radio" name="step1"> Non</label>
+      </div>
+
+      <div class="step" style="display:none;">
+        <p>Avez-vous eu des changements de situation ?</p>
+        <label><input type="radio" name="step2"> Oui</label>
+        <label><input type="radio" name="step2"> Non</label>
+      </div>
+
+      <div class="step" style="display:none;">
+        <p>Souhaitez-vous continuer votre inscription ?</p>
+        <label><input type="radio" name="step3"> Oui</label>
+        <label><input type="radio" name="step3"> Non</label>
+      </div>
+
+      <div style="margin-top:20px;">
+        <button type="button" id="prevBtn" onclick="changeStep(-1)" style="display:none;">← Précédent</button>
+        <button type="button" id="nextBtn" onclick="changeStep(1)">Suivant →</button>
+      </div>
+    </form>
+
+    <div id="resultMessage" style="margin-top: 20px; font-size: 18px;"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
