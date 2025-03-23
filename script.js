@@ -99,11 +99,34 @@ function changeStep(direction) {
 
 function validateStep(step) {
     const radios = steps[step].querySelectorAll('input[type="radio"]');
-    return Array.from(radios).some(r => r.checked);
+    let valid = Array.from(radios).some(r => r.checked);
+
+    // Si l'utilisateur a répondu "Oui" pour travailler, vérifier que les heures sont bien renseignées
+    if (step === 0 && document.querySelector('input[name="step1"]:checked').value === "oui") {
+        const heures = document.getElementById("heuresTravailles").value;
+        if (!heures || heures <= 0) {
+            alert("Veuillez entrer un nombre d'heures valides.");
+            valid = false;
+        }
+    }
+
+    return valid;
 }
 
 function showResult() {
     document.getElementById("actualisationForm").style.display = "none";
     document.getElementById("resultMessage").innerHTML =
       `✅ Actualisation de <strong>${utilisateurConnecte}</strong> terminée avec succès !<br><br><small>(simulation)</small>`;
+}
+
+function toggleHeuresField() {
+    const heuresContainer = document.getElementById("heuresContainer");
+    const radios = document.getElementsByName("step1");
+
+    if (radios[0].checked) {
+        heuresContainer.style.display = "block";  // Affiche le champ pour les heures
+    } else {
+        heuresContainer.style.display = "none";  // Masque le champ pour les heures
+        document.getElementById("heuresTravailles").value = ""; // Réinitialise la valeur du champ
+    }
 }

@@ -28,8 +28,13 @@
     <form id="actualisationForm">
       <div class="step active">
         <p>Travaillez-vous actuellement ?</p>
-        <label><input type="radio" name="step1"> Oui</label>
-        <label><input type="radio" name="step1"> Non</label>
+        <label><input type="radio" name="step1" value="oui" onclick="toggleHeuresField()"> Oui</label>
+        <label><input type="radio" name="step1" value="non" onclick="toggleHeuresField()"> Non</label>
+      </div>
+
+      <div id="heuresContainer" style="display:none;">
+        <label for="heuresTravailles">Combien d'heures avez-vous travaillées cette semaine ?</label><br>
+        <input type="number" id="heuresTravailles" min="0" placeholder="Entrez le nombre d'heures">
       </div>
 
       <div class="step" style="display:none;">
